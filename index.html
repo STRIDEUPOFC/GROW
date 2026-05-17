@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StrideUP | Premium Sneakers</title>
+    <style>
+    .verified-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite que o texto quebre em telas pequenas */
+    gap: 8px;
+    font-size: 3.5rem;
+    font-weight: 800;
+}
+
+.verified-icon {
+    width: 28px; /* Tamanho proporcional ao texto */
+    height: 28px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Ajuste para mobile */
+@media (max-width: 480px) {
+    .verified-title {
+        font-size: 2.8rem;
+    }
+    .verified-icon {
+        width: 42px;
+        height: 42px;
+    }
+}
+        /* --- RESET, TRAVA HORIZONTAL E PRELOADER --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { 
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden; /* Bloqueia o vazamento lateral */
+    position: relative;
+    background-color: #050505;
+}
+
+/* TELA DE ENTRADA (PRELOADER) */
+#preloader {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 1s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.loader-content {
+    text-align: center;
+    animation: pulse 2s infinite;
+}
+
+.loader-logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.4; transform: scale(0.98); }
+    50% { opacity: 1; transform: scale(1); }
+}
+
+/* Classe aplicada via JS para subir a cortina */
+.loaded #preloader { transform: translateY(-100%); }
+        /* --- RESET & DESIGN SYSTEM --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            /* PALETA DARK MODE REFINADA */
+            --bg-deep: #050505;       /* Preto profundo */
+            --bg-section: #0f0f0f;    /* Cinza quase preto para alternar seções */
+            --bg-card: #181818;       /* Cinza chumbo para cards */
+            --bg-glass: rgba(30, 30, 30, 0.5); 
+            
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;    
+            
+            --accent: #34d399;        /* Verde menta */
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-deep);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+
+        /* --- ANIMATIONS --- */
+        .reveal { opacity: 0; transform: translateY(30px); transition: var(--transition); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- BUTTONS --- */
+        .btn-group { display: flex; gap: 15px; margin-top: 30px; justify-content: center; }
+        
+        .btn {
+            padding: 16px 32px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            border-radius: 2px;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        
+        .btn-primary { 
+            background: var(--text-main); 
+            color: var(--bg-deep); 
+            border: 1px solid var(--text-main);
+        }
+        .btn-primary:hover { 
+            background: transparent; 
+            color: var(--text-main); 
+            box-shadow: 0 0 20px rgba(255,255,255,0.1);
+        }
+
+        .btn-secondary { 
+            background: transparent; 
+            border: 1px solid var(--border-subtle); 
+            color: var(--text-muted); 
+        }
+        .btn-secondary:hover { 
+            border-color: var(--text-main); 
+            color: var(--text-main); 
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 95vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: var(--bg-deep);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://images.unsplash.com/photo-1646747794382-7f3284527d42?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+            filter: grayscale(100%);
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, var(--bg-deep) 100%);
+            z-index: 1;
+        }
+
+        .hero-content { 
+            position: relative; 
+            z-index: 2; 
+            max-width: 900px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+
+        .brand-logo {
+            max-width: 130px;
+            margin-bottom: 25px;
+        }
+
+        .hero-tag {
+            font-size: 0.7rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 8vw, 4.5rem); /* Tamanho fluido */
+            line-height: 1;
+            font-weight: 900;
+            white-space: nowrap; /* Não quebra o texto */
+            background: linear-gradient(180deg, #fff 30%, #666 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 40px;
+            letter-spacing: -2px;
+        }
+
+        /* Barra de Pagamentos Ajustada */
+        .payment-glass {
+            display: inline-flex; /* Faz a box encolher para o tamanho do conteúdo */
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-subtle);
+            padding: 14px 35px;
+            border-radius: 100px;
+            margin-top: 50px; /* Adicione isso: ajuste o valor conforme desejar */
+            margin-bottom: 20px;
+        }
+
+        .payment-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        
+        .payment-item svg { width: 18px; height: 18px; stroke: var(--text-main); }
+        .discount-tag { font-size: 0.65rem; background: var(--accent); color: #000; padding: 2px 8px; border-radius: 2px; font-weight: 800; margin-left: 5px; }
+
+        /* --- SECTIONS --- */
+        section { padding: 100px 0; }
+        .bg-alt { background-color: var(--bg-section); } /* Cor alternada */
+
+        .section-tag { 
+            color: var(--accent); 
+            text-transform: uppercase; 
+            font-size: 0.7rem; 
+            font-weight: 700; 
+            letter-spacing: 3px; 
+            margin-bottom: 15px; 
+            display: block; 
+        }
+
+        h2 { font-size: 2.5rem; margin-bottom: 25px; font-weight: 800; letter-spacing: -1px; }
+
+        /* --- LOGISTICA --- */
+        .import-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .img-placeholder {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .img-placeholder img { width: 100%; display: block; filter: grayscale(20%); }
+
+/* --- REVIEWS --- */
+        .reviews-section { background: var(--bg-deep); padding-bottom: 120px; }
+        
+        .marquee-wrapper {
+            width: 100%;
+            display: flex;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .marquee-content {
+            display: flex;
+            gap: 25px;
+            animation: scrollLeft 40s linear infinite;
+            padding: 20px 0;
+            /* ADICIONADO: Alinha os cards pelo topo. Isso impede que um card comprido estique os outros */
+            align-items: flex-start; 
+        }
+
+        @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        .review-card {
+            background: var(--bg-card);
+            min-width: 380px;
+            padding: 35px;
+            border-radius: 4px;
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* --- CLASSE AJUSTADA: FOTOS REAIS --- */
+        .review-product-photo {
+            width: 100%;
+            height: auto;       /* Permite que a altura se adapte à foto original */
+            max-height: 600px;  /* Segura fotos muito gigantes de celular para não quebrar a tela */
+            object-fit: contain; /* Garante que a imagem apareça inteira, sem cortes */
+            border-radius: 4px;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            border: 1px solid var(--border-subtle);
+            filter: grayscale(20%);
+            transition: var(--transition);
+        }
+        
+        .review-card:hover .review-product-photo {
+            filter: grayscale(0%);
+        }
+
+        .client-avatar { width: 50px; height: 50px; border-radius: 50%; filter: grayscale(100%); border: 2px solid var(--border-subtle); }
+        .stars { color: var(--accent); letter-spacing: 2px; }
+        .purchased-item { font-size: 0.65rem; color: #fff; background: rgba(255,255,255,0.05); padding: 5px 12px; border: 1px solid var(--border-subtle); border-radius: 2px; width: fit-content; }
+        /* --- FEATURES --- */
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+        .feature-card { padding: 40px; background: var(--bg-card); border: 1px solid var(--border-subtle); transition: var(--transition); border-radius: 4px;}
+        .feature-card:hover { border-color: var(--accent); transform: translateY(-10px); }
+        .icon-box svg { width: 40px; height: 40px; stroke: var(--accent); margin-bottom: 20px; }
+
+        /* --- FOOTER --- */
+        footer { padding: 80px 0; background: var(--bg-deep); border-top: 1px solid var(--border-subtle); text-align: center; }
+
+        /* --- MOBILE --- */
+        @media (max-width: 968px) {
+            .hero h1 { white-space: normal; font-size: 2.8rem; }
+            .payment-glass { 
+                flex-direction: row; /* Mantém horizontal no tablet */
+                gap: 15px; 
+                padding: 12px 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+                border-radius: 20px;
+            }
+            .import-grid { grid-template-columns: 1fr; text-align: center; }
+            .features-grid { grid-template-columns: 1fr; }
+            .btn-group { flex-direction: column; width: 100%; }
+        }
+
+        @media (max-width: 480px) {
+            .payment-glass { flex-direction: column; border-radius: 15px; width: 90%; }
+            .hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+<div id="preloader">
+    <div class="loader-content">
+        <div class="loader-logo">StrideUp</div>
+    </div>
+</div>
+    <header class="hero">
+        <div class="hero-bg"></div> 
+        <div class="hero-overlay"></div> 
+        <div class="container">
+            <div class="hero-content reveal">
+                
+                <img src="assets/img/IMG_4074.png" alt="StrideUp Logo" class="brand-logo">
+                
+                <span class="hero-tag">Importaçao Exclusivas • USA to Brazil</span>
+
+                <h1>ELEVE SEU ESTILO.</h1>
+
+                <div class="btn-group">
+                    <a href="https://strideupofc.myshopify.com/" class="btn btn-primary">Acessar Loja</a>
+                    <a href="https://wa.me/5567996540942?text=Olá,%20quero%20fazer%20um%20orçamento." class="btn btn-secondary" target="_blank">
+                     WhatsApp
+                     </a>
+                     </div>
+
+                <div class="payment-glass">
+                    <div class="payment-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                        12x Sem Juros
+                    </div>
+                    <div class="payment-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        Boleto
+                    </div>
+                    <div class="payment-item" style="color: var(--accent);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+                        Pix <span class="discount-tag">5% OFF</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-alt">
+        <div class="container">
+            <div class="import-grid">
+                <div class="reveal">
+                    <span class="section-tag">Logística Expressa</span>
+                    <h2>Do Hub nos EUA para sua porta.</h2>
+                    <p>Esqueça os prazos comuns. A StrideUp opera com <strong>frete aéreo prioritário</strong>. Preservamos a integridade da caixa (box fresh) e a estrutura do sneaker com manuseio de luxo.</p>
+                </div>
+                <div class="reveal">
+                    <div class="img-placeholder">
+                        <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Logística Aérea Sneakers">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews-section">
+        <div class="container">
+            <div class="reviews-header reveal" style="text-align: center; margin-bottom: 60px;">
+                <span class="section-tag">Clientes fieis</span>
+                <h2>Quem Calça StrideUp</h2>
+            </div>
+        </div>
+
+        <div class="marquee-wrapper">
+            <div class="marquee-content">
+                <div class="review-card">
+                    <div class="client-info">
+                        <img src="assets/img/IMG_4597.jpeg" alt="Cliente" class="client-avatar">
+                        <div class="client-details"><h5>Matheus C.</h5><div class="stars">★★★★★</div></div>
+                    </div>
+                    <span class="purchased-item">Jordan 3 "Neapolitan"</span>
+                    
+                    <img src="assets/img/IMG_4601.jpeg" alt="Jordan 1 Chicago" class="review-product-photo">
+                    
+                    <p class="review-text">"De longe a melhor loja de tenis de 2025, ja é meu quinto tenis e to só no começo."</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="client-info">
+                        <img src="assets/img/IMG_4599.jpeg" alt="Cliente" class="client-avatar">
+                        <div class="client-details"><h5>Fernanda S.</h5><div class="stars">★★★★★</div></div>
+                    </div>
+                    <span class="purchased-item">Dunk Low 'estrange love'</span>
+
+                    <img src="assets/img/IMG_4603.jpeg" alt="Dunk Low Panda" class="review-product-photo">
+
+                    <p class="review-text">"O Pix aprovou na hora e enviaram no dia seguinte. A caixa veio sem nenhum arranhão."</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="client-info">
+                        <img src="assets/img/IMG_4600.jpeg" alt="Cliente" class="client-avatar">
+                        <div class="client-details"><h5>André Costa</h5><div class="stars">★★★★★</div></div>
+                    </div>
+                    <span class="purchased-item">AF1 "Stussy"</span>
+
+                    <img src="assets/img/IMG_4602.jpeg" alt="Yeezy Slide" class="review-product-photo">
+
+                    <p class="review-text">"Já importei com outras lojas, mas a qualidade da StrideUp é outro nível. Virei cliente fixo."</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="client-info">
+                        <img src="assets/img/IMG_4598.jpeg" alt="Cliente" class="client-avatar">
+                        <div class="client-details"><h5>Lucas M.</h5><div class="stars">★★★★★</div></div>
+                    </div>
+                    <span class="purchased-item">Jordan 4 a ma maniere </span>
+
+                    <img src="assets/img/IMG_4604.jpeg" alt="Jordan 1" class="review-product-photo">
+
+                    <p class="review-text">"Qualidade insana. é pisar na nuvem fenomenal esse tenis ."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-alt">
+    <div class="container">
+        <div class="section-header reveal" style="text-align: center; margin-bottom: 40px;">
+            <span class="section-tag">Padrão de Qualidade</span>
+            <h2 class="verified-title">
+    Autenticidade Verificada
+    <svg class="verified-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10.5213 2.62368C11.3147 1.75255 12.6853 1.75255 13.4787 2.62368L14.4989 3.74391C14.8526 4.13231 15.3591 4.3421 15.8818 4.31644L17.388 4.24243C18.5606 4.18481 19.5422 5.16644 19.4846 6.33903L19.4106 7.84519C19.3849 8.36792 19.5947 8.87442 19.9831 9.22812L21.1033 10.2483C21.9744 11.0417 21.9744 12.4123 21.1033 13.2057L19.9831 14.2259C19.5947 14.5796 19.3849 15.0861 19.4106 15.6088L19.4846 17.115C19.5422 18.2876 18.5606 19.2692 17.388 19.2116L15.8818 19.1376C15.3591 19.1119 14.8526 19.3217 14.4989 19.7101L13.4787 20.8303C12.6853 21.7014 11.3147 21.7014 10.5213 20.8303L9.50109 19.7101C9.14739 19.3217 8.64089 19.1119 8.11816 19.1376L6.61197 19.2116C5.43939 19.2692 4.45775 18.2876 4.51537 17.115L4.58939 15.6088C4.61504 15.0861 4.40525 14.5796 4.01685 14.2259L2.89667 13.2057C2.02554 12.4123 2.02554 11.0417 2.89667 10.2483L4.01685 9.22812C4.40525 8.87442 4.61504 8.36792 4.58939 7.84519L4.51537 6.33903C4.45775 5.16644 5.43939 4.18481 6.61197 4.24243L8.11816 4.31644C8.64089 4.3421 9.14739 4.13231 9.50109 3.74391L10.5213 2.62368Z" fill="#0095F6"/>
+        <path d="M15.8561 8.97195C16.149 9.26484 16.149 9.73972 15.8561 10.0326L11.3561 14.5326C11.0632 14.8255 10.5883 14.8255 10.2954 14.5326L8.14323 12.3805C7.85034 12.0876 7.85034 11.6127 8.14323 11.3198C8.43613 11.0269 8.911 11.0269 9.20389 11.3198L10.8257 12.9416L14.7954 8.97195C15.0883 8.67906 15.5632 8.67906 15.8561 8.97195Z" fill="white"/>
+    </svg>
+</h2>
+        </div>
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <h3>Check Legítimo</h3>
+                    <p>Inspeção física detalhada: costuras, materiais e blacklight UV test.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                    <h3>Deadstock (DS)</h3>
+                    <p>Apenas produtos novos, nunca usados, com acessórios originais.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg></div>
+                    <h3>Rastreio Full</h3>
+                    <p>Updates em tempo real desde os EUA até a entrega final.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">StrideUp</div>
+            <p style="color: var(--text-muted); font-size: 0.8rem;">&copy; 2026 StrideUp | High Performance Logistics & Sneakers.</p>
+        </div>
+    </footer>
+
+<script>
+    // 1. Gerencia o fechamento da tela de entrada (Preloader)
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.body.classList.add('loaded');
+        }, 1200); 
+    });
+
+    // 2. Observador para as animações de scroll (Revelar elementos)
+    // Criamos a constante apenas UMA vez
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    // 3. Aplica o observador a todos os elementos com a classe .reveal
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
