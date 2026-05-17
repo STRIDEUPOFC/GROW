@@ -574,45 +574,11 @@
 </head>
 <body>
 
-    <nav id="navbar">
-    <a href="#" class="logo-container font-ahsing" style="font-size: 2.5rem; color: #fff; text-decoration: none; position: relative; top: -5px;">Grow</a>
-    <div class="nav-links">
-        <a href="#about">Concept</a>
-        <a href="#course">System</a>
-        <a href="#kit">Hardware</a>
-        <a href="#partners">Partners</a>
-    </div>
-    <div class="mobile-menu-btn">☰</div>
-</nav>
-
-    <header class="hero">
-        <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&q=80&w=1920" alt="Premium Fade" class="hero-bg">
-        <div class="hero-content reveal">
-            <h1 class="hero-title font-ahsing" style="font-size: clamp(4rem, 10vw, 8rem); margin-bottom: 10px;">Grow</h1>
-            <h2 style="font-family: var(--font-head); font-weight: 200; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 40px;">Master Your Own Fade.</h2>
-            <p class="hero-subtitle">The ultimate self-grooming ecosystem for the modern man.</p>
-            <a href="#kit" class="btn btn-light">Explore Kits</a>
-        </div>
-    </header>
-
-    <section id="about" class="section-padding">
-        <div class="container about-grid">
-            <div class="reveal">
-                <h2 class="about-heading">Redefining<br>Personal<br>Grooming.</h2>
-            </div>
-            <div class="reveal delay-1">
-                <p class="about-text"><span class="font-ahsing" style="font-size: 1.4rem;">Grow</span> is not a barber shop. We are a modern grooming ecosystem designed to give you total control over your appearance. Through premium hardware, detailed education, and an uncompromising aesthetic, we help men master the art of the self-fade.</p>
-                <p class="about-text">No more waiting in lines. No more inconsistent cuts. Just precise, professional results executed by you, on your schedule.</p>
-                <a href="#course" class="btn">Discover the System</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-padding bg-gray">
+ <section class="section-padding bg-gray">
         <div class="container">
             <div class="section-header reveal">
                 <h2>The Results</h2>
-                <p>Real transformations from the <span class="font-ahsing">Grow</span> ecosystem.</p>
+                <p>Real transformations from the <img src="img/IMG_6519.png" alt="Grow" style="height: 1em; vertical-align: middle;"> ecosystem.</p>
             </div>
             <div class="testimonials-wrapper reveal delay-1">
                 <div class="testimonial-card">
@@ -627,7 +593,7 @@
                 </div>
                 <div class="testimonial-card">
                     <div class="quote-icon">"</div>
-                    <p class="testimonial-text">A genuinely premium experience from unboxing to the final cut. <span class="font-ahsing">Grow</span> is shifting the culture of male grooming.</p>
+                    <p class="testimonial-text">A genuinely premium experience from unboxing to the final cut. <img src="img/IMG_6519.png" alt="Grow" style="height: 1em; vertical-align: middle;"> is shifting the culture of male grooming.</p>
                     <p class="testimonial-author">Steven C. — Consultant</p>
                 </div>
             </div>
@@ -636,13 +602,13 @@
 
     <section class="final-cta reveal">
         <h2>Your appearance changes how the world sees you.</h2>
-        <a href="#kit" class="btn btn-light">Join <span class="font-ahsing" style="text-transform: none; margin-left: 5px;">Grow</span></a>
+        <a href="#kit" class="btn btn-light">Join <img src="img/IMG_6519.png" alt="Grow" style="height: 1em; vertical-align: middle; margin-left: 5px;"></a>
     </section>
 
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
-                <h4 class="font-ahsing" style="font-size: 2.5rem; margin-bottom: 10px;">Grow</h4>
+                <img src="img/IMG_6519.png" alt="Grow" style="height: 2.5rem; margin-bottom: 10px; display: block;">
                 <p>Master your own fade.</p>
             </div>
             <div class="footer-col">
@@ -669,9 +635,48 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 <span class="font-ahsing">Grow</span> Grooming Ecosystem. All rights reserved.</p>
+            <p>&copy; 2026 <img src="img/IMG_6519.png" alt="Grow" style="height: 1em; vertical-align: middle;"> Grooming Ecosystem. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Sticky Navbar Background
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Intersection Observer for Scroll Animations
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            revealElements.forEach(el => {
+                revealOnScroll.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
