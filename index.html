@@ -8,29 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@200;400;700&display=swap" rel="stylesheet">
     <style>
-<style>
-@font-face {
-    font-family: 'Ahsing';
-    src: url('https://db.onlinewebfonts.com/t/202613d9e80e9f1688998811e51381e4.woff2') format('woff2'),
-         url('https://db.onlinewebfonts.com/t/202613d9e80e9f1688998811e51381e4.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-.font-ahsing {
-    font-family: 'Ahsing', cursive !important; /* Adicionei 'cursive' como backup visual */
-    text-transform: none !important;
-    font-weight: normal !important;
-    letter-spacing: 0 !important;
-}
-
-    /* Ajuste específico para a Logo no Nav */
-    .logo-container {
-        font-size: 2.2rem;
-        color: #F5F5F5;
-        text-decoration: none;
-    }
         /* CSS VARIABLES */
         :root {
             --black: #000000;
@@ -574,11 +551,142 @@
 </head>
 <body>
 
- <section class="section-padding bg-gray">
+    <nav id="navbar">
+        <a href="#" class="logo">GROW</a>
+        <div class="nav-links">
+            <a href="#about">Concept</a>
+            <a href="#course">System</a>
+            <a href="#kit">Hardware</a>
+            <a href="#partners">Partners</a>
+        </div>
+        <div class="mobile-menu-btn">☰</div>
+    </nav>
+
+    <header class="hero">
+        <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&q=80&w=1920" alt="Premium Fade" class="hero-bg">
+        <div class="hero-content reveal">
+            <h1 class="hero-title">Master Your Own Fade.</h1>
+            <p class="hero-subtitle">The ultimate self-grooming ecosystem for the modern man.</p>
+            <a href="#kit" class="btn btn-light">Explore Kits</a>
+        </div>
+    </header>
+
+    <section id="about" class="section-padding">
+        <div class="container about-grid">
+            <div class="reveal">
+                <h2 class="about-heading">Redefining<br>Personal<br>Grooming.</h2>
+            </div>
+            <div class="reveal delay-1">
+                <p class="about-text">Grow is not a barber shop. We are a modern grooming ecosystem designed to give you total control over your appearance. Through premium hardware, detailed education, and an uncompromising aesthetic, we help men master the art of the self-fade.</p>
+                <p class="about-text">No more waiting in lines. No more inconsistent cuts. Just precise, professional results executed by you, on your schedule.</p>
+                <a href="#course" class="btn">Discover the System</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="course" class="section-padding bg-gray">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>The Education</h2>
+                <p>Mastering the fade requires knowledge. Our systematic curriculum breaks it down.</p>
+            </div>
+            <div class="course-grid">
+                <div class="course-card reveal">
+                    <div class="course-number">01</div>
+                    <h3 class="course-title">Fade Basics</h3>
+                    <p class="course-desc">Understand the anatomy of a fade, guidelines, and the mechanics of blending light into dark.</p>
+                </div>
+                <div class="course-card reveal delay-1">
+                    <div class="course-number">02</div>
+                    <h3 class="course-title">Machine Setup</h3>
+                    <p class="course-desc">Learn to zero-gap your clippers, select the right guards, and maintain your premium hardware.</p>
+                </div>
+                <div class="course-card reveal delay-2">
+                    <div class="course-number">03</div>
+                    <h3 class="course-title">Blend Techniques</h3>
+                    <p class="course-desc">Advanced wrist movements, flick-out methods, and using corners for detail work.</p>
+                </div>
+                <div class="course-card reveal delay-3">
+                    <div class="course-number">04</div>
+                    <h3 class="course-title">Beginner Mistakes</h3>
+                    <p class="course-desc">Identify and avoid the common pitfalls that ruin self-fades before they happen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kit" class="section-padding kit-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Premium Hardware</h2>
+                <p>The tools required to execute flawless transitions.</p>
+            </div>
+            <div class="kit-grid">
+                <div class="kit-card reveal">
+                    <img src="https://images.unsplash.com/photo-1585228514930-74e7fc762145?auto=format&fit=crop&q=80&w=800" alt="Starter Kit" class="kit-image">
+                    <h3 class="kit-title">Fade Starter Kit</h3>
+                    <p style="color: var(--gray-soft);">The essential tools for beginners entering the self-grooming space.</p>
+                    <ul class="kit-features">
+                        <li>Matte Black Precision Clipper</li>
+                        <li>Standard Magnetic Guards (0.5 - 4)</li>
+                        <li>Detailing Trimmer</li>
+                        <li>Access to Digital Basics Course</li>
+                    </ul>
+                    <a href="#" class="btn btn-light" style="width: 100%;">Add to Cart — $149</a>
+                </div>
+                <div class="kit-card reveal delay-1">
+                    <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&q=80&w=800" alt="Pro Kit" class="kit-image">
+                    <h3 class="kit-title">Barber Plus Kit</h3>
+                    <p style="color: var(--gray-soft);">Uncompromising performance for the dedicated modern man.</p>
+                    <ul class="kit-features">
+                        <li>Zero-Gapped Rotary Motor Clipper</li>
+                        <li>Premium Metal Guards (0.5 - 8)</li>
+                        <li>Straight Edge Razor & Japanese Scissors</li>
+                        <li>Lifetime Access to Full Curriculum</li>
+                    </ul>
+                    <a href="#" class="btn btn-light" style="width: 100%;">Add to Cart — $289</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="partners" class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>The Network</h2>
+                <p>We partner with top-tier professionals. Earn through our affiliate commission model.</p>
+            </div>
+            <div class="partner-grid">
+                <div class="partner-card reveal">
+                    <img src="https://images.unsplash.com/photo-1593062096033-9a26b09da705?auto=format&fit=crop&q=80&w=600" alt="Partner Barber" class="partner-img">
+                    <div class="partner-overlay">
+                        <h3>Marcus V.</h3>
+                        <p style="font-family: var(--font-body); font-size: 0.9rem; color: #ccc;">Master Barber — NYC</p>
+                    </div>
+                </div>
+                <div class="partner-card reveal delay-1">
+                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=600" alt="Partner Barber" class="partner-img">
+                    <div class="partner-overlay">
+                        <h3>Elias J.</h3>
+                        <p style="font-family: var(--font-body); font-size: 0.9rem; color: #ccc;">Studio Founder — LA</p>
+                    </div>
+                </div>
+                <div class="partner-card reveal delay-2">
+                    <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&q=80&w=600" alt="Partner Barber" class="partner-img">
+                    <div class="partner-overlay">
+                        <h3>David T.</h3>
+                        <p style="font-family: var(--font-body); font-size: 0.9rem; color: #ccc;">Independent — LDN</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-gray">
         <div class="container">
             <div class="section-header reveal">
                 <h2>The Results</h2>
-                <p>Real transformations from the <img src="img/IMG_6519.png" alt="Grow" style="height: 1em; vertical-align: middle;"> ecosystem.</p>
+                <p>Real transformations from the Grow ecosystem.</p>
             </div>
             <div class="testimonials-wrapper reveal delay-1">
                 <div class="testimonial-card">
@@ -593,7 +701,7 @@
                 </div>
                 <div class="testimonial-card">
                     <div class="quote-icon">"</div>
-                    <p class="testimonial-text">A genuinely premium experience from unboxing to the final cut. <img src="img/IMG_6519.png" alt="Grow" style="height: 1em; vertical-align: middle;"> is shifting the culture of male grooming.</p>
+                    <p class="testimonial-text">A genuinely premium experience from unboxing to the final cut. Grow is shifting the culture of male grooming.</p>
                     <p class="testimonial-author">Steven C. — Consultant</p>
                 </div>
             </div>
@@ -602,13 +710,13 @@
 
     <section class="final-cta reveal">
         <h2>Your appearance changes how the world sees you.</h2>
-        <a href="#kit" class="btn btn-light">Join <img src="img/IMG_6519.png" alt="Grow" style="height: 1em; vertical-align: middle; margin-left: 5px;"></a>
+        <a href="#kit" class="btn btn-light">Join Grow</a>
     </section>
 
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
-                <img src="img/IMG_6519.png" alt="Grow" style="height: 2.5rem; margin-bottom: 10px; display: block;">
+                <h4 style="font-family: var(--font-head); font-size: 1.5rem; letter-spacing: 2px;">GROW</h4>
                 <p>Master your own fade.</p>
             </div>
             <div class="footer-col">
@@ -617,6 +725,7 @@
                     <li><a href="#">Starter Kit</a></li>
                     <li><a href="#">Barber Plus Kit</a></li>
                     <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Replacement Parts</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -624,6 +733,7 @@
                 <ul>
                     <li><a href="#">The Course</a></li>
                     <li><a href="#">Partner Network</a></li>
+                    <li><a href="#">Community</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -631,52 +741,14 @@
                 <ul>
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 <img src="img/IMG_6519.png" alt="Grow" style="height: 1em; vertical-align: middle;"> Grooming Ecosystem. All rights reserved.</p>
+            <p>&copy; 2026 Grow Grooming Ecosystem. All rights reserved.</p>
         </div>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Sticky Navbar Background
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-
-            // Intersection Observer for Scroll Animations
-            const revealElements = document.querySelectorAll('.reveal');
-            
-            const revealOptions = {
-                threshold: 0.15,
-                rootMargin: "0px 0px -50px 0px"
-            };
-
-            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) {
-                        return;
-                    } else {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, revealOptions);
-
-            revealElements.forEach(el => {
-                revealOnScroll.observe(el);
-            });
-        });
-    </script>
-</body>
-</html>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
