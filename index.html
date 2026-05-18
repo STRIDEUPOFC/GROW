@@ -325,107 +325,6 @@
             color: #666;
         }
 
-        /* KIT SECTION */
-        .kit-section {
-            background: var(--black);
-            color: var(--white);
-        }
-
-        .kit-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-        }
-
-        .kit-card {
-            background: #111;
-            padding: 60px;
-            text-align: center;
-            border: 1px solid #333;
-            transition: transform 0.6s ease;
-        }
-
-        .kit-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--white);
-        }
-
-        .kit-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            filter: grayscale(100%) contrast(1.2);
-            margin-bottom: 40px;
-            opacity: 0.8;
-            transition: opacity 0.4s ease;
-        }
-
-        .kit-card:hover .kit-image {
-            opacity: 1;
-        }
-
-        .kit-title {
-            font-size: 2rem;
-            margin-bottom: 16px;
-        }
-
-        .kit-features {
-            text-align: left;
-            margin: 30px 0;
-            color: var(--gray-soft);
-        }
-
-        .kit-features li {
-            padding: 8px 0;
-            border-bottom: 1px solid #222;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .kit-features li::before {
-            content: '—';
-            margin-right: 12px;
-            color: var(--white);
-        }
-
-        /* PARTNER BARBERS SECTION */
-        .partner-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .partner-card {
-            position: relative;
-            height: 400px;
-            overflow: hidden;
-            background: var(--black);
-        }
-
-        .partner-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%);
-            transition: transform 0.8s ease, filter 0.8s ease;
-        }
-
-        .partner-card:hover .partner-img {
-            transform: scale(1.05);
-            filter: grayscale(0%);
-        }
-
-        .partner-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 30px;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-            color: var(--white);
-        }
-
         /* TESTIMONIALS SECTION */
         .testimonials-wrapper {
             display: flex;
@@ -528,7 +427,7 @@
 
         /* RESPONSIVE DESIGN */
         @media (max-width: 992px) {
-            .about-grid, .kit-grid {
+            .about-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
@@ -561,8 +460,6 @@
         <div class="nav-links">
             <a href="#about">Conceito</a>
             <a href="#course">Método</a>
-            <a href="#kit">Equipamentos</a>
-            <a href="#partners">Parceiros</a>
         </div>
         <div class="mobile-menu-btn">☰</div>
     </nav>
@@ -572,7 +469,7 @@
         <div class="hero-content reveal">
             <h1 class="hero-title">Domine o seu próprio degradê.</h1>
             <p class="hero-subtitle">A Grow é o ecossistema moderno que ensina você a cortar o próprio cabelo com estilo, precisão e um preço acessível de verdade.</p>
-            <a href="#kit" class="btn btn-light">Conhecer os Kits</a>
+            <a href="#course" class="btn btn-light">Descubra o Método</a>
         </div>
     </header>
 
@@ -620,73 +517,6 @@
         </div>
     </section>
 
-    <section id="kit" class="section-padding kit-section">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>Equipamentos Premium</h2>
-                <p>Os itens certos fazem toda a diferença para cortar com mais precisão e mais confiança.</p>
-            </div>
-            <div class="kit-grid">
-                <div class="kit-card reveal">
-                    <img src="https://images.unsplash.com/photo-1585228514930-74e7fc762145?auto=format&fit=crop&q=80&w=800" alt="Kit Inicial" class="kit-image">
-                    <h3 class="kit-title">Kit Iniciante Fade</h3>
-                    <p style="color: var(--gray-soft);">O essencial para quem quer começar no auto-corte sem complicação.</p>
-                    <ul class="kit-features">
-                        <li>Máquina de Precisão Preto Fosco</li>
-                        <li>Pentes Magnéticos Essenciais (0.5 - 4)</li>
-                        <li>Máquina de Acabamento</li>
-                        <li>Acesso ao Curso Digital Básico</li>
-                    </ul>
-                    <a href="#" class="btn btn-light" style="width: 100%;">Adicionar ao Carrinho — R$149</a>
-                </div>
-                <div class="kit-card reveal delay-1">
-                    <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&q=80&w=800" alt="Kit Pro" class="kit-image">
-                    <h3 class="kit-title">Kit Barber Plus</h3>
-                    <p style="color: var(--gray-soft);">Mais performance, mais precisão e uma experiência digna de marca premium.</p>
-                    <ul class="kit-features">
-                        <li>Máquina Profissional com Motor Potente</li>
-                        <li>Pentes Premium de Metal (0.5 - 8)</li>
-                        <li>Navalha de Acabamento e Tesoura Japonesa</li>
-                        <li>Acesso Vitalício ao Curso Completo</li>
-                    </ul>
-                    <a href="#" class="btn btn-light" style="width: 100%;">Adicionar ao Carrinho — R$289</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="partners" class="section-padding">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>A Rede</h2>
-                <p>Parceiros selecionados ajudam a espalhar a Grow. Ganhe com nosso sistema de comissão e indicação.</p>
-            </div>
-            <div class="partner-grid">
-                <div class="partner-card reveal">
-                    <img src="https://images.unsplash.com/photo-1593062096033-9a26b09da705?auto=format&fit=crop&q=80&w=600" alt="Barbeiro Parceiro" class="partner-img">
-                    <div class="partner-overlay">
-                        <h3>Marcus V.</h3>
-                        <p style="font-family: var(--font-body); font-size: 0.9rem; color: #ccc;">Barbeiro Master — NYC</p>
-                    </div>
-                </div>
-                <div class="partner-card reveal delay-1">
-                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=600" alt="Barbeiro Parceiro" class="partner-img">
-                    <div class="partner-overlay">
-                        <h3>Elias J.</h3>
-                        <p style="font-family: var(--font-body); font-size: 0.9rem; color: #ccc;">Fundador de Estúdio — LA</p>
-                    </div>
-                </div>
-                <div class="partner-card reveal delay-2">
-                    <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&q=80&w=600" alt="Barbeiro Parceiro" class="partner-img">
-                    <div class="partner-overlay">
-                        <h3>David T.</h3>
-                        <p style="font-family: var(--font-body); font-size: 0.9rem; color: #ccc;">Independente — LDN</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="section-padding bg-gray">
         <div class="container">
             <div class="section-header reveal">
@@ -715,7 +545,7 @@
 
     <section class="final-cta reveal">
         <h2>Sua aparência muda a forma como o mundo te enxerga.</h2>
-        <a href="#kit" class="btn btn-light" style="display: inline-flex; align-items: center; justify-content: center;">Entrar na <img src="img/IMG_6519.png" alt="Grow" style="height: 1.2em; margin-left: 8px;"></a>
+        <a href="#course" class="btn btn-light" style="display: inline-flex; align-items: center; justify-content: center;">Entrar na <img src="img/IMG_6519.png" alt="Grow" style="height: 1.2em; margin-left: 8px;"></a>
     </section>
 
     <footer>
@@ -725,19 +555,9 @@
                 <p>Domine o seu próprio degradê.</p>
             </div>
             <div class="footer-col">
-                <h4>Loja</h4>
-                <ul>
-                    <li><a href="#">Kit Inicial</a></li>
-                    <li><a href="#">Kit Barber Plus</a></li>
-                    <li><a href="#">Acessórios</a></li>
-                    <li><a href="#">Peças de Reposição</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
                 <h4>Ecossistema</h4>
                 <ul>
                     <li><a href="#">O Curso</a></li>
-                    <li><a href="#">Rede de Parceiros</a></li>
                     <li><a href="#">Comunidade</a></li>
                 </ul>
             </div>
